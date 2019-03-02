@@ -39,24 +39,12 @@ public class TimeUtil {
         return localDateTime.format(formatter);
     }
 
-    public static String convertToYyyyMMddHHmmss3(LocalDateTime localDateTime) {
-        if (null == localDateTime) {
-            return null;
-        }
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
-        return localDateTime.format(formatter);
-    }
-
     public static LocalDate convertFromBasic(String date) {
         return LocalDate.parse(date, DateTimeFormatter.BASIC_ISO_DATE);
     }
 
     public static LocalDate convertFromYyMMdd(String date) {
         return LocalDate.parse(date, DateTimeFormatter.ofPattern("yyMMdd"));
-    }
-
-    public static LocalDate convertFromYyyyMMdd(String date) {
-        return LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyyMMdd"));
     }
 
     public static LocalDate getStartOfMonth(LocalDate localDate) {
@@ -69,8 +57,8 @@ public class TimeUtil {
         ZonedDateTime ldtZoned = ldt.atZone(ZoneId.systemDefault());
         ZonedDateTime utcZoned = ldtZoned.withZoneSameInstant(ZoneId.of("UTC"));
 
-//        log.debug("local time zone: ", ldtZoned.toLocalDateTime().toString());
-//        log.debug("utc time zone: ", utcZoned.toLocalDateTime().toString());
+        System.out.println("local time zone: " + ldtZoned.toLocalDateTime().toString());
+        System.out.println("utc time zone: " + utcZoned.toLocalDateTime().toString());
 
         return utcZoned.toLocalDateTime();
     }
@@ -94,7 +82,7 @@ public class TimeUtil {
     }
 
     public static LocalDateTime convertFromMMddHHmmss(String date) {
-        return LocalDateTime.parse(date, DateTimeFormatter.ofPattern("MMddHHmmss"));
+        return LocalDateTime.parse(date, DateTimeFormatter.ofPattern("yyMMddHHmmss"));
     }
 
     public static LocalDateTime convertFromYyyyMMddHHmmss(String date) {
